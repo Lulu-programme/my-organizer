@@ -1,0 +1,16 @@
+/* ---   Configuration   --- */
+:root {
+    --primary: #D8AC12;
+    --secondary: #ACD812;
+    --text: #080324;
+    --accent: #8F8F8F;
+    --links: #121986;
+    --background: #F8F8F8;
+    --border: #5545CA;
+    --lulup: #4C5550;
+}
+@font-face { font-family: 'lulup'; src: url(../font/C64.ttf); }
+@font-face { font-family: 'hack'; src: url(../font/Hack.ttf); }
+@font-face { font-family: 'lcd'; src: url(../font/LCD.ttf); }
+@font-face { font-family: 'text'; src: url(../font/Mainlux.otf); }
+@font-face { font-family: 'note'; src: url(../font/Ubuntu.ttf); }
