@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="navigation">
+    <div class="link">
+        <a href="{% url 'home' %}"><img src="{% static 'images/icon/return.png' %}" class="icon"></a>
+    </div>
+    <div class="title"><h1>{{ title }}</h1></div>
+</div>
+
+<div class="card-task">
+    <h2>{{ task.title }}</h2>
+    <h3>{{ task.category }}</h3>
+    <p>
+        {% if task.priority == 0 %}
+        <img src="{% static 'images/icon/high.png' %}" class="icon">
+        {% elif task.priority == 1 %}
+        <img src="{% static 'images/icon/medium.png' %}" class="icon">
+        {% elif task.priority == 2 %}
+        <img src="{% static 'images/icon/low.png' %}" class="icon">
+        {% endif %}
+    </p>
+    <p>{{ task.description }}</p>
+    <p>{{ task.notes }}</p>
+</div>
+
+{% endblock %}

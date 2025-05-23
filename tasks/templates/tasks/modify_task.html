@@ -9,18 +9,18 @@
     <div class="title"><h1>{{ title }}</h1></div>
 </div>
 
-<form action="{% url 'add-tasks' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'modify-task' task.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset>
         <legend>Titre</legend>
-        <input type="text" id="title" name="title" required>
+        <input type="text" id="title" name="title" value="{{ task.title }}" required>
         <p class="required">Obligatoire</p>
     </fieldset>
     <fieldset>
         <legend>Catégorie</legend>
         {% for category in categories %}
         <div>
-            <input type="radio" id="category" name="category" value="{{ category }}">
+            <input type="radio" id="category" name="category" value="{{ category }}" {% if task.category == category %}checked{% endif %}>
             <label for="category">{{ category }}</label>
         </div>
         {% endfor %}
@@ -29,19 +29,19 @@
         <legend>Priorité</legend>
         {% for priority in priorities %}
         <div>
-            <input type="radio" id="priority" name="priority" value="{{ priority.id }}">
+            <input type="radio" id="priority" name="priority" value="{{ priority.id }}" {% if task.priority == priority.id %}checked{% endif %}>
             <label for="priority">{{ priority.type }}</label>
         </div>
         {% endfor %}
     </fieldset>
     <fieldset>
         <legend>Description</legend>
-        <textarea name='description' id='description'></textarea>
+        <textarea name='description' id='description'>{{ task.description }}</textarea>
         <p class='helptext'>Séparer les paragraphes par un point.</p>
     </fieldset>
     <fieldset>
         <legend>Notes</legend>
-        <textarea name='notes' id='notes'></textarea>
+        <textarea name='notes' id='notes'>{{ task.notes }}</textarea>
         <p class='helptext'>Séparez-les par une virgule et terminer par un point.</p>
     </fieldset>
     <p><input type="submit" value="Ajouter"></p>

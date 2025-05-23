@@ -26,6 +26,8 @@ urlpatterns = [
     path('', tasks.views.index, name='home'),
     # Tasks sections
     path('add-tasks/', tasks.views.add_task, name='add-tasks'),
+    path('modify-task/<int:task_id>/', tasks.views.modify_task, name='modify-task'),
+    path('view-task/<int:task_id>/', tasks.views.view_task, name='view-task'),
 ]
 
 if settings.DEBUG:

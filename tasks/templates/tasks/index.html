@@ -30,10 +30,10 @@
             {% endif %}
         </div>
         <div class="col">
-            <a href="#"><img src="{% static 'images/icon/task_view.png' %}" class="icon"></a>
+            <a href="{% url 'view-task' task.id %}"><img src="{% static 'images/icon/task_view.png' %}" class="icon"></a>
         </div>
         <div class="col">
-            <a href="#"><img src="{% static 'images/icon/task_modify.png' %}" class="icon"></a>
+            <a href="{% url 'modify-task' task.id %}"><img src="{% static 'images/icon/task_modify.png' %}" class="icon"></a>
         </div>
     </div>
     {% endfor %}

@@ -49,3 +49,38 @@ def add_task(request):
     }
 
     return render(request, 'tasks/add_task.html', context)
+
+def modify_task(request, task_id):
+
+    task = Task.objects.get(id=task_id)
+
+    if request.method == 'POST':
+        task.title = request.POST.get('title')
+        task.category = request.POST.get('category')
+        task.priority = int(request.POST.get('priority'))
+        task.description = request.POST.get('description')
+        task.notes = request.POST.get('notes')
+
+        task.save()
+
+        return redirect('home')
+
+    context = {
+        'title': f'Modification de {task.title}',
+        'task': task,
+        'categories': tasks_category,
+        'priorities': tasks_priority,
+    }
+
+    return render(request, 'tasks/modify_task.html', context)
+
+def view_task(request, task_id):
+
+    task = Task.objects.get(id=task_id)
+
+    context = {
+        'title': f'Tache : {task.title}',
+        'task': task,
+    }
+
+    return render(request, 'tasks/view_task.html', context)
