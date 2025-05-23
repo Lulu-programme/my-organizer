@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="navigation">
+    <div class="title"><h1>{{ title }}</h1></div>
+    <div class="link">
+        <a href="{% url 'add-tasks' %}"><img src="{% static 'images/icon/add_task.png' %}" class="icon"><span>Ajouter une tâche</span></a>
+    </div>
+</div>
+<div class="table">
+    <div class="row-title">
+        <div class="col">Titre</div>
+        <div class="col">Catégorie</div>
+        <div class="col">Priorité</div>
+        <div class="col">Détail</div>
+        <div class="col">Modifier</div>
+    </div>
+    {% if tasks %}
+    {% for task in tasks %}
+    <div class="row">
+        <div class="col">{{ task.title }}</div>
+        <div class="col">{{ task.category }}</div>
+        <div class="col">
+            {% if task.priority == 0 %}
+            <img src="{% static 'images/icon/high.png' %}" class="icon">
+            {% elif task.priority == 1 %}
+            <img src="{% static 'images/icon/medium.png' %}" class="icon">
+            {% elif task.priority == 2 %}
+            <img src="{% static 'images/icon/low.png' %}" class="icon">
+            {% endif %}
+        </div>
+        <div class="col">
+            <a href="#"><img src="{% static 'images/icon/task_view.png' %}" class="icon"></a>
+        </div>
+        <div class="col">
+            <a href="#"><img src="{% static 'images/icon/task_modify.png' %}" class="icon"></a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p><img src="{% static 'images/icon/task_end.png' %}" class="icon"><span>Pas de tâches</span></p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="navigation">
+    <div class="title"><h1>{{ title }}</h1></div>
+</div>
+
+<form action="{% url 'add-tasks' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Titre</legend>
+        <input type="text" id="title" name="title" required>
+        <p class="required">Obligatoire</p>
+    </fieldset>
+    <fieldset>
+        <legend>Catégorie</legend>
+        {% for category in categories %}
+        <div>
+            <input type="radio" id="category" name="category" value="{{ category }}">
+            <label for="category">{{ category }}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
+    <fieldset>
+        <legend>Priorité</legend>
+        {% for priority in priorities %}
+        <div>
+            <input type="radio" id="priority" name="priority" value="{{ priority.id }}">
+            <label for="priority">{{ priority.type }}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
+    <fieldset>
+        <legend>Description</legend>
+        <textarea name='description' id='description'></textarea>
+        <p class='helptext'>Séparer les paragraphes par un point.</p>
+    </fieldset>
+    <fieldset>
+        <legend>Notes</legend>
+        <textarea name='notes' id='notes'></textarea>
+        <p class='helptext'>Séparez-les par une virgule et terminer par un point.</p>
+    </fieldset>
+    <p><input type="submit" value="Ajouter"></p>
+</form>
+
+{% endblock %}

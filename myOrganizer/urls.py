@@ -18,9 +18,14 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path
+import tasks.views
 
 urlpatterns = [
+    # Home
     path('admin/', admin.site.urls),
+    path('', tasks.views.index, name='home'),
+    # Tasks sections
+    path('add-tasks/', tasks.views.add_task, name='add-tasks'),
 ]
 
 if settings.DEBUG:

@@ -5,12 +5,59 @@
     --text: #080324;
     --accent: #8F8F8F;
     --links: #121986;
-    --background: #F8F8F8;
+    --background: #FFFACD;
     --border: #5545CA;
     --lulup: #4C5550;
+    --bgtitle: #457190;
+    --title: #FFFF26;
+    --required: #C04C4C;
 }
-@font-face { font-family: 'lulup'; src: url(../font/C64.ttf); }
+@font-face { font-family: 'code'; src: url(../font/C64.ttf); }
+@font-face { font-family: 'lulup'; src: url(../font/Nokia.ttf); }
 @font-face { font-family: 'hack'; src: url(../font/Hack.ttf); }
 @font-face { font-family: 'lcd'; src: url(../font/LCD.ttf); }
-@font-face { font-family: 'text'; src: url(../font/Mainlux.otf); }
-@font-face { font-family: 'note'; src: url(../font/Ubuntu.ttf); }
+@font-face { font-family: 'note'; src: url(../font/Mainlux.otf); }
+@font-face { font-family: 'text'; src: url(../font/Ubuntu.ttf); }
+
+/* ---   Main settings   --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'text', serif; font-size: 14pt; font-weight: normal; color: var(--text); }
+body { background-color: var(--background); }
+a { text-decoration: none; font-family: 'hack', serif; font-size: 14pt; }
+h1 { font-size: 20pt; font-family: 'hack', serif; text-align: center; color: var(--primary); background-color: var(--bgtitle); padding: 10px 30px; margin: 10px auto; border-radius: 10px; width: fit-content; border-bottom: 5px solid var(--text); }
+h2{ text-align: center; font-size: 18pt; margin: 10px; border-radius: 10px; }
+h3{ text-align: center; font-size: 16pt; margin: 10px; }
+div.container{ padding: 10px; }
+.icon{ width: 50px; border-radius: 10px; vertical-align: middle; }
+.required{ color: var(--required); }
+.helptext{ color: var(--lulup); }
+
+/* ---   Navigation   --- */
+div.navbar{ background-color: var(--primary); display: flex; flex-direction: row; justify-content: space-around; align-items: center; border-bottom: 3px solid var(--border); }
+div.logo p img{ width: 100px; vertical-align: middle; padding: 10px 0; }
+div.logo p span{ font-family: 'lulup', serif; font-size: 20pt; margin-left: 20px; color: var(--bgtitle); }
+div.links-list, div.navigation div.link{ display: flex; flex-direction: row; justify-content: space-around; align-items: center; }
+div.links-list a, div.navigation div.link a{ background-color: var(--secondary); margin-left: 25px; border-radius: 10px; padding: 10px; border: 2px solid var(--border); }
+div.links-list a span, div.navigation div.link a span{ padding: 10px; color: var(--links); border-radius: 10px; }
+div.links-list a:hover span, div.navigation div.link a:hover span{ background-color: var(--links); color: var( --secondary) }
+div.navigation{ display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 10px; }
+
+/* ---   Table tasks   --- */
+div.table{ display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 10px; }
+div.table p{ margin: 10px; }
+div.table div.row-title, div.table div.row{ display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 95%; margin: auto; }
+div.table div.row-title div.col, div.table div.row div.col{ align-content: center; border: 2px solid var(--border); width: 20%; text-align: center; padding: 10px; height: 75px; }
+div.table div.row-title{ background-color: var(--title);}
+div.table div.row-title div.col{ font-family: 'lulup', serif; font-size: 14pt; color: var(--bgtitle); }
+
+/* ---   Forms   --- */
+form{ display: flex; flex-direction: column; justify-content: center; align-items: center; width: 40%; margin: auto; }
+form fieldset{ display: flex; flex-direction: column; justify-content: center; align-items: center; width: 90%; margin: 10px auto; border: 2px solid var(--border); padding: 10px; border-radius: 10px; }
+form fieldset legend{ background-color: var(--bgtitle); text-align: center; padding: 10px 50px; border-radius: 10px; color: var(--title); font-size: 18pt; }
+form fieldset input[type='text']{ padding: 10px; border-radius: 10px; font-family: 'hack', serif; width: 90%; margin: auto; }
+form fieldset div{ display: flex; flex-direction: row; justify-content: start; align-items: center; width: 30%; margin: auto; }
+form fieldset div input{ width: 20px; height: 20px; }
+form fieldset div label{ margin: 5px 10px; }
+form fieldset textarea{ padding: 10px; border-radius: 10px; font-family: 'hack', serif; width: 90%; height: 300px; margin: auto; }
+form fieldset p{ margin: 10px; font-family: 'note', serif; font-weight: bold; font-size: 18pt; }
+form p input[type='submit']{ background-color: var(--primary); border: 2px solid var(--border); border-radius: 10px; padding: 10px 50px; margin: 10px; font-size: 17pt; }
+form p input[type='submit']:hover{ background-color: var(--secondary); }
